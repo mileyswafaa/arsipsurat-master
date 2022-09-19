@@ -1,6 +1,8 @@
 <?php
 session_start();
 include "koneksi/ceksession.php";
+
+require 'vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
