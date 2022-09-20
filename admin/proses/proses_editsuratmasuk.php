@@ -12,11 +12,11 @@
 	$perihal_suratmasuk   	            = mysqli_real_escape_string($db,$_POST['perihal_suratmasuk']);
     $operator	                        = mysqli_real_escape_string($db,$_POST['operator']);
 	$disposisi1	                        = mysqli_real_escape_string($db,$_POST['disposisi1']);
-	$tanggal_disposisi1                 = mysqli_real_escape_string($db,$_POST['tanggal_disposisi1']);
-	$disposisi2	                        = mysqli_real_escape_string($db,$_POST['disposisi2']);
-	$tanggal_disposisi2                 = mysqli_real_escape_string($db,$_POST['tanggal_disposisi2']);
-    $disposisi3	                        = mysqli_real_escape_string($db,$_POST['disposisi3']);
-	$tanggal_disposisi3                 = mysqli_real_escape_string($db,$_POST['tanggal_disposisi3']);
+	$tanggal_disposisi1                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
+	$disposisi2	                        = mysqli_real_escape_string($db,"");
+	$tanggal_disposisi2                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
+    $disposisi3	                        = mysqli_real_escape_string($db,"");
+	$tanggal_disposisi3                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
 
 	$file_suratmasuk			            = $_FILES['file_suratmasuk']['name'];
      date_default_timezone_set('Asia/Jakarta'); 
