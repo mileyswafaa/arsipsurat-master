@@ -52,6 +52,9 @@ date_default_timezone_set("Asia/Jakarta");
 	}
 
 $domPdf = new Dompdf();
+
+$approved = $data['disposisi3']=='1' ? '<img style="margin: auto;" src="#" alt="Paraf..." />' : "";
+
 $disposisi = '
 <!DOCTYPE html>
     <html lang="en">
@@ -162,7 +165,7 @@ $disposisi = '
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi IPDS</span>
 						</div>
 					</td>
-					<td style="width: 15%"></td>
+					<td style="width: 15%">'.$approved.'</td>
 				</tr>
 			</table>
 		</div>

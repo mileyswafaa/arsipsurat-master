@@ -10,12 +10,12 @@
     $pengirim                           = mysqli_real_escape_string($db,$_POST['pengirim']);
 	$kepada_suratmasuk		            = mysqli_real_escape_string($db,$_POST['kepada_suratmasuk']);
 	$perihal_suratmasuk   	            = mysqli_real_escape_string($db,$_POST['perihal_suratmasuk']);
-    $operator	                        = mysqli_real_escape_string($db,$_POST['operator']);
+    $operator	                        = mysqli_real_escape_string($db,"");
 	$disposisi1	                        = mysqli_real_escape_string($db,$_POST['disposisi1']);
 	$tanggal_disposisi1                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
-	$disposisi2	                        = mysqli_real_escape_string($db,"");
+	$disposisi2	                        = mysqli_real_escape_string($db,$_POST['disposisi2']);
 	$tanggal_disposisi2                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
-    $disposisi3	                        = mysqli_real_escape_string($db,"");
+    $disposisi3	                        = mysqli_real_escape_string($db,$_POST['disposisi3'] ?? "");
 	$tanggal_disposisi3                 = mysqli_real_escape_string($db,date("Y-m-d H:i:s"));
 
 	$file_suratmasuk			            = $_FILES['file_suratmasuk']['name'];

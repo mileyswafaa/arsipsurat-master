@@ -83,7 +83,7 @@ include "login/ceksession.php";
                             $tgl_masuk = $data['tanggalmasuk_suratmasuk'];
                             $tgl_masuk = date('m-d-Y H:i:s', strtotime($tgl_masuk));
                             $tgl_surat = $data['tanggalsurat_suratmasuk'];
-                            $tgl_surat = date('m-d-Y', strtotime($tgl_surat));
+                            $tgl_surat = !empty($tgl_surat) ? date('m-d-Y', strtotime($tgl_surat)) : "";
                             $tgl_disp1 = $data['tanggal_disposisi1'];
                             $tgl_disp1  = date('m-d-Y H:i:s', strtotime($tgl_disp1));
                             $tgl_disp2 = $data['tanggal_disposisi2'];
@@ -94,7 +94,7 @@ include "login/ceksession.php";
                             
                       <input type=hidden name="id_suratmasuk" value="<?php echo $id;?>">
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Masuk <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Penerimaan <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class='input-group date' id='myDatepicker4'>
@@ -106,10 +106,10 @@ include "login/ceksession.php";
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kode Surat <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">No. Agenda <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input value="<?php echo $data['kode_suratmasuk'];?>" type="text" onkeyup="validAngka(this)" id="kode_suratmasuk" name="kode_suratmasuk" required="required" maxlength="7" placeholder="Masukkan Kode Surat" class="form-control col-md-7 col-xs-12">
+                          <input value="<?php echo $data['kode_suratmasuk'];?>" type="text" id="kode_suratmasuk" name="kode_suratmasuk" required="required" placeholder="Masukkan Kode Surat" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
@@ -124,46 +124,17 @@ include "login/ceksession.php";
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nomor Surat <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tanggal dan No. Surat <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input value="<?php echo $data['nomor_suratmasuk'];?>" type="text" id="nomor_suratmasuk" name="nomor_suratmasuk" required="required" maxlength="35" placeholder="Masukkan Nomor Surat" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Surat <span class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                                <input value="<?php echo "$tgl_surat" ?>" type="text" class="form-control has-feedback-left" id="single_cal3" name="tanggalsurat_suratmasuk" placeholder="First Name" aria-describedby="inputSuccess2Status3" required="required" readonly="readonly">
-                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                            </div>
-                          </div>
-                        </fieldset>
-                        </div>
-                      </div>
-                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pengirim <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input value="<?php echo $data['pengirim'];?>" type="text" id="pengirim" name="pengirim" required="required" placeholder="Masukkan Asal/Pengirim Surat" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kepada <span class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select value="<?php echo $data['kepada_suratmasuk'];?>" id="kepada_suratmasuk" name="kepada_suratmasuk" class="select2_single form-control" tabindex="-1">
-                            <option>Kasubbag Umum</option>
-                            <option>Koor. Fungsi Statistik Sosial</option>
-                            <option>Koor. Fungsi Statistik Produksi</option>
-                            <option>Koor. Fungsi Statistik Distribusi</option>
-                            <option>Koor. Fungsi Nerwilis</option>
-                            <option>Koor. Fungsi IPDS</option>
-                          </select>
                         </div>
                       </div>
                       <div class="form-group">
@@ -181,15 +152,51 @@ include "login/ceksession.php";
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Operator </label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Lampiran <span class="required">*</span>
+                        </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input value="<?php echo $_SESSION['nama'];?>" type="text" id="operator" name="operator"  readonly="readonly" class="form-control col-md-7 col-xs-12">
+                          <input value="<?php echo $data['disposisi2'];?>" type="text" id="disposisi2" name="disposisi2" required="required" placeholder="... Lembar" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kepada <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select value="<?php echo $data['kepada_suratmasuk'];?>" id="kepada_suratmasuk" name="kepada_suratmasuk" class="select2_single form-control" tabindex="-1">
+                            <option <?php echo empty($data['kepada_suratmasuk']) ? "selected" : ""?>>Kasubbag Umum</option>
+                            <option>Koor. Fungsi Statistik Sosial</option>
+                            <option>Koor. Fungsi Statistik Produksi</option>
+                            <option>Koor. Fungsi Statistik Distribusi</option>
+                            <option>Koor. Fungsi Nerwilis</option>
+                            <option>Koor. Fungsi IPDS</option>
+                          </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Disposisi </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input value="<?php echo $data['disposisi1'];?>" type="text" id="disposisi1" name="disposisi1" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Penyelesaian <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <fieldset>
+                          <div class="control-group">
+                            <div class="controls">
+                                <input <?php echo !empty($tgl_surat) ? "value='$tgl_surat'" : "" ?> type="text" class="form-control has-feedback-left" id="single_cal3" name="tanggalsurat_suratmasuk" placeholder="First Name" aria-describedby="inputSuccess2Status3" readonly="readonly">
+                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                            </div>
+                          </div>
+                        </fieldset>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Disetujui </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input value="1" type="checkbox" id="disposisi3" name="disposisi3" class="form-control col-md-7 col-xs-12" style="width: 24px; height: 24px;">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
