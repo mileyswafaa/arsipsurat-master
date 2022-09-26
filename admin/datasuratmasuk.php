@@ -111,14 +111,16 @@ include "login/ceksession.php";
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th width="3%">No Urut</th>
-                          <th width="10%">Tanggal Masuk</th>
-                          <th width="3%">Kode Surat</th>
-                          <th width="10%">Tanggal Surat</th>
-                          <th width="14%">Pengirim</th>
-                          <th width="15%">Nomor Surat</th>
-                          <th width="10%">Kepada</th>
-                          <th width="25%">Perihal</th>
+                          <th width="3%">No</th>
+                          <th width="9%">Tanggal Penerimaan</th>
+                          <th width="3%">No. Agenda</th>
+                          <th width="9%">Tanggal Penyelesaian</th>
+                          <th width="13%">Pengirim</th>
+                          <th width="14%">Tanggal dan No. Surat</th>
+                          <th width="9%">Kepada</th>
+                          <th width="20%">Perihal</th>
+                          <th width="5%">Tkt. Keamanan</th>
+                          <th width="5%">Disetujui</th>
                           <th width="15%">Aksi</th>
                         </tr>
                       </thead>
@@ -126,22 +128,33 @@ include "login/ceksession.php";
 
                       <tbody>
                             <?php
+                            $i=0;
                             while($data = mysqli_fetch_array($query1)){
+                              $i++;
+                              $keamanan="";
+                              switch ($data['nomorurut_suratmasuk']) {
+                                case "SR": $keamanan="Sangat Rahasia"; break;
+                                case "R": $keamanan="Rahasia"; break;
+                                case "B": $keamanan="Biasa"; break;
+                              }
                               echo'<tr>
-                              <td>	'. $data['nomorurut_suratmasuk'].'  	</td>
-                              <td>	'. $data['tanggalmasuk_suratmasuk'].'		</td>
-                              <td>	'. $data['kode_suratmasuk'].'	</td>
-                              <td>	'. $data['tanggalsurat_suratmasuk'].'	</td>
-                              <td>	'. $data['pengirim'].'  		</td>
-                              <td>	'. $data['nomor_suratmasuk'].'  		</td>
-                              <td>	'. $data['kepada_suratmasuk'].'		</td>
-                              <td>  '. $data['perihal_suratmasuk'].'  </td> 
+                              <td>'. $i.'</td>
+                              <td>'. $data['tanggalmasuk_suratmasuk'].'</td>
+                              <td>'. $data['kode_suratmasuk'].'</td>
+                              <td>'. $data['tanggalsurat_suratmasuk'].'</td>
+                              <td>'. $data['pengirim'].'</td>
+                              <td>'. $data['nomor_suratmasuk'].'</td>
+                              <td>'. $data['kepada_suratmasuk'].'</td>
+                              <td>'. $data['perihal_suratmasuk'].'</td>
+                              <td>'. $keamanan.'</td> 
+                              <td>'. ($data['disposisi3']=='1' ? 'Disetujui' : 'Belum Disetujui').'</td>
                               <td style="text-align:center;">
-                              <a href= surat_masuk/'.$data['file_suratmasuk'].'><button type="button" title="Unduh File" class="btn btn-success btn-xs"><i class="fa fa-download"></i></button></a>
-                              <a href= downloaddisposisi.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Unduh Disposisi" class="btn btn-info btn-xs"><i class="fa fa-download"></i></button></a>
-                              <a href=detail-suratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>
-                              <a href=editsuratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
-                              <a onclick="return konfirmasi()" href="proses/proses_hapussuratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
+                                <a href= surat_masuk/'.$data['file_suratmasuk'].'><button type="button" title="Unduh File" class="btn btn-success btn-xs"><i class="fa fa-download"></i></button></a>
+                                <a href= downloaddisposisi.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Unduh Disposisi" class="btn btn-info btn-xs"><i class="fa fa-download"></i></button></a>
+                                <a href=detail-suratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>
+                                <a href=editsuratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'><button type="button" title="Edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
+                                <a onclick="return konfirmasi()" href="proses/proses_hapussuratmasuk.php?id_suratmasuk='.$data['id_suratmasuk'].'"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a>
+                              </td>
                               </tr>';
                             }
                             ?>

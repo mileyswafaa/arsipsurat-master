@@ -76,7 +76,7 @@ include "login/ceksession.php";
                     <br />
                     <form action="proses/proses_inputsuratkeluar.php"  name="formsuratkeluar" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Keluar <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Pengambilan No. Surat <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class='input-group date' id='myDatepicker4'>
@@ -91,7 +91,7 @@ include "login/ceksession.php";
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kode Surat <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" onkeyup="validAngka(this)" id="kode_suratkeluar" name="kode_suratkeluar" required="required" maxlength="7" placeholder="Masukkan Kode Surat" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="kode_suratkeluar" name="kode_suratkeluar" required="required" maxlength="7" placeholder="Masukkan Kode Surat" class="form-control col-md-7 col-xs-12">
                           <br><a href= "file/kode_klasifikasi_surat.xlsx"><b>Lihat Kode Klasifikasi Surat</b></a></br>
                         </div>
                       </div>
@@ -123,30 +123,13 @@ include "login/ceksession.php";
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Bagian <span class="required">*</span> </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <select name="nama_bagian" class="select2_single form-control" tabindex="-1">
-                            <option></option>
-                                <?php include '../koneksi/koneksi.php';
-                                $sql  		= "SELECT nama_bagian FROM tb_bagian";                        
-                                $query  	= mysqli_query($db, $sql);
-                                while ($data = mysqli_fetch_array($query)){
-                                      echo '<option value="'.$data['nama_bagian'].'">'.$data['nama_bagian'].'</option>';
-                                      } 
-                                ?> 
+                            <option selected>Kasubbag Umum</option>
+                            <option>Koor. Fungsi Statistik Sosial</option>
+                            <option>Koor. Fungsi Statistik Produksi</option>
+                            <option>Koor. Fungsi Statistik Distribusi</option>
+                            <option>Koor. Fungsi Nerwilis</option>
+                            <option>Koor. Fungsi IPDS</option> 
                           </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Surat <span class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal3" name="tanggalsurat_suratkeluar" placeholder="First Name" aria-describedby="inputSuccess2Status3" required="required" readonly="readonly">
-                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                            </div>
-                          </div>
-                        </fieldset>
                         </div>
                       </div>
                       <div class="form-group">
@@ -161,20 +144,6 @@ include "login/ceksession.php";
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <textarea id="perihal_suratkeluar" name="perihal_suratkeluar" required="required" class="form-control" rows="3" placeholder='Masukkan Perihal Surat'></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">File <span class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                         <input name="file_suratkeluar" accept="application/pdf" type="file" id="file_suratkeluar" class="form-control" autocomplete="off"/> *max 10mb 
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Operator <span class="required"></span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input value="<?php echo $_SESSION['nama'];?>" type="text" id="operator" name="operator" required="required" readonly="readonly" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
