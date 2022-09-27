@@ -16,7 +16,7 @@ date_default_timezone_set("Asia/Jakarta");
 	$data 		= mysqli_fetch_array($query);
 
 	$tgl_surat = $data['tanggalsurat_suratmasuk'];
-	$tgl_surat = date('d/m/Y', strtotime($tgl_surat));
+	$tgl_surat = !empty($tgl_surat) ? date('d/m/Y', strtotime($tgl_surat)) : "";
 	$tgl_masuk = $data['tanggalmasuk_suratmasuk'];
 	$tgl_masuk = date('d/m/Y', strtotime($tgl_masuk));
 	
@@ -126,7 +126,7 @@ $disposisi = '
 				<tr>
 					<td style="text-align: center; width: 40%; padding: 8px 5px;">Lampiran</td>
 					<td style="text-align: center; width: 5%; padding: 8px 5px;">:</td>
-					<td style="width: 55%; padding: 8px 5px;"></td>
+					<td style="width: 55%; padding: 8px 5px;">'.($data["disposisi2"] ?? "").'</td>
 				</tr>
 			</table>
 			<table style="width: 100%;">

@@ -92,32 +92,28 @@ include "login/ceksession.php";
                     <table class="table table-striped">
                       <tbody>
                         <tr>
-                          <td width="40%">Tanggal Masuk</td>
+                          <td width="40%">Tanggal Penerimaan</td>
                           <td><?php echo $data['tanggalmasuk_suratmasuk']?></td>
                         </tr>
                         <tr>
-                          <td>Kode Surat</td>
+                          <td>No. Agenda</td>
                           <td><?php echo $data['kode_suratmasuk']?></td>
                         </tr>
                         <tr>
-                          <td>Nomor Urut</td>
-                          <td><?php echo $data['nomorurut_suratmasuk']?></td>
+                          <td>TKt. Keamanan</td>
+                          <td><?php switch($data['nomorurut_suratmasuk']) {
+                            case "SR": echo "Sangat Rahasia"; break;
+                            case "R": echo "Rahasia"; break;
+                            case "B": echo "Biasa"; break;
+                          }?></td>
                         </tr>
                         <tr>
-                          <td>Nomor Surat</td>
+                          <td>Tanggal dan No. Surat</td>
                           <td><?php echo $data['nomor_suratmasuk']?></td>
-                        </tr>
-                        <tr>
-                          <td>Tanggal Surat</td>
-                          <td><?php echo $data['tanggalsurat_suratmasuk']?></td>
                         </tr>
                         <tr>
                           <td>Pengirim</td>
                           <td><?php echo $data['pengirim']?></td>
-                        </tr>
-                        <tr>
-                          <td>Kepada</td>
-                          <td><?php echo $data['kepada_suratmasuk']?></td>
                         </tr>
                         <tr>
                           <td>Perihal</td>
@@ -128,36 +124,24 @@ include "login/ceksession.php";
                           <td><a href= "<?php echo 'surat_masuk/'.$data['file_suratmasuk'].''?>"><b>Unduh File</b></a></td>
                         </tr>
                         <tr>
-                          <td>Operator</td>
-                          <td><?php echo $data['operator']?></td>
-                        </tr>
-                        <tr>
-                          <td>Tanggal Entry</td>
-                          <td><?php echo $data['tanggal_entry']?></td>
-                        </tr>
-                        <tr>
-                          <td>Disposisi 1</td>
-                          <td><?php echo $data['disposisi1']?></td>
-                        </tr>
-                        <tr>
-                          <td>Tanggal Disposisi 1</td>
-                          <td><?php echo $data['tanggal_disposisi1']?></td>
-                        </tr>
-                        <tr>
-                          <td>Disposisi 2</td>
+                          <td>Lampiran</td>
                           <td><?php echo $data['disposisi2']?></td>
                         </tr>
                         <tr>
-                          <td>Tanggal Disposisi 2</td>
-                          <td><?php echo $data['tanggal_disposisi2']?></td>
-                        </tr>
-                         <tr>
-                          <td>Disposisi 3</td>
-                          <td><?php echo $data['disposisi3']?></td>
+                          <td>Kepada</td>
+                          <td><?php echo $data['kepada_suratmasuk']?></td>
                         </tr>
                         <tr>
-                          <td>Tanggal Disposisi 3</td>
-                          <td><?php echo $data['tanggal_disposisi3']?></td>
+                          <td>Disposisi</td>
+                          <td><?php echo $data['disposisi1']?></td>
+                        </tr>
+                        <tr>
+                          <td>Tanggal Penyelesaian</td>
+                          <td><?php echo $data['tanggal_entry']?></td>
+                        </tr>
+                        <tr>
+                          <td>Disetujui</td>
+                          <td><?php echo $data['disposisi3']?></td>
                         </tr>
                       </tbody>
                     </table>

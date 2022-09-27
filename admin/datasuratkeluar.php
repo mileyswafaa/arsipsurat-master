@@ -65,7 +65,7 @@ include "login/ceksession.php";
                     <h2>Data<small>Surat Keluar</small></h2>
                     <div class="clearfix"></div>
                   </div>
-                   <form action="downloadlaporan_suratkeluar.php"  name="download_suratkeluar" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                   <!-- <form action="downloadlaporan_suratkeluar.php"  name="download_suratkeluar" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="col-md-2 col-sm-2 col-xs-6">
                           <select name="bulan" class="select2_single form-control" tabindex="-1">
                             <option>Pilih Bulan</option>
@@ -94,7 +94,7 @@ include "login/ceksession.php";
                             ?>
                           </select>
                         </div>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan Surat Keluar</button></a>
+                  <button type="submit" class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan Surat Keluar</button></a> -->
                   <a href="inputsuratkeluar.php"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Surat Keluar</button></a>
                   </form>
                   <div class="x_content">
@@ -111,14 +111,13 @@ include "login/ceksession.php";
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th width="15%">Tanggal Pengambilan No. Surat</th>
+                          <th width="10%">Kode Surat</th>
                           <th width="15%">Nomor Surat</th>
-                          <th width="10%">Tanggal Keluar</th>
-                          <th width="5%">Kode Surat</th>
-                          <th width="10%">Tanggal Surat</th>
                           <th width="10%">Bagian</th>
                           <th width="15%">Kepada</th>
-                          <th width="21%">Perihal</th>
-                          <th width="14%">Aksi</th>
+                          <th width="20%">Perihal</th>
+                          <th width="10%">Aksi</th>
                         </tr>
                       </thead>
 
@@ -127,17 +126,16 @@ include "login/ceksession.php";
                             <?php
                             while($data = mysqli_fetch_array($query1)){
                               echo'<tr>
-                              <td>	'. $data['nomor_suratkeluar'].'  	</td>
                               <td>	'. $data['tanggalkeluar_suratkeluar'].'		</td>
+                              <td>	'. $data['nomor_suratkeluar'].'  	</td>
                               <td>	'. $data['kode_suratkeluar'].'	</td>
-                              <td>	'. $data['tanggalsurat_suratkeluar'].'  		</td>
                               <td>	'. $data['nama_bagian'].'  		</td>
                               <td>	'. $data['kepada_suratkeluar'].'		</td>
                               <td>  '. $data['perihal_suratkeluar'].'  </td> 
                               <td style="text-align:center;">
-                              <a href= surat_keluar/'.$data['file_suratkeluar'].'><button type="button" title="Unduh File" class="btn btn-success btn-xs"><i class="fa fa-download"></i></button></a>
+                              <!-- <a href= surat_keluar/'.$data['file_suratkeluar'].'><button type="button" title="Unduh File" class="btn btn-success btn-xs"><i class="fa fa-download"></i></button></a>
                               <a href=detail-suratkeluar.php?id_suratkeluar='.$data['id_suratkeluar'].'><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>
-                              <a href=editsuratkeluar.php?id_suratkeluar='.$data['id_suratkeluar'].'><button type="button" title="Edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
+                              <a href=editsuratkeluar.php?id_suratkeluar='.$data['id_suratkeluar'].'><button type="button" title="Edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a> -->
                               <a onclick="return konfirmasi()" href=proses/proses_hapussuratkeluar.php?id_suratkeluar='.$data['id_suratkeluar'].'><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
                               </tr>';
                             }
