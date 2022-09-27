@@ -34,7 +34,7 @@
     $tgl_disp3                  = date('Y-m-d H:i:s', strtotime($tanggal_disposisi3));
 	
     if (!($tgl_masuk=='') and !($kode_suratmasuk =='') and !($nomorurut_suratmasuk  =='') and !($nomor_suratmasuk =='') and !($pengirim =='') and !($perihal_suratmasuk =='') and !($tanggal_entry =='') and ($tipe_file == "application/pdf") and ($ukuran_file <= 10340000)) {		
-		$nama_baru = $thnNow.'-'.$nomorurut_suratmasuk . $ext_file;
+		$nama_baru = $thnNow.'-'.str_replace(" ", "_", str_replace("/", "", $nomor_suratmasuk)). $ext_file;
 		$path = "../surat_masuk/".$nama_baru;
 		move_uploaded_file($tmp_file, $path);
 		
