@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include '../../koneksi/koneksi.php';
+	if ($_SESSION['username']!='kepala') { header("Location: /arsipsurat-master/admin/datasuratmasuk.php"); die(); }
     $id				                    = mysqli_real_escape_string($db,$_POST['id_suratmasuk']);
 	$tanggalmasuk_suratmasuk	        = mysqli_real_escape_string($db,$_POST['tanggalmasuk_suratmasuk']);
 	$kode_suratmasuk	                = mysqli_real_escape_string($db,$_POST['kode_suratmasuk']);
@@ -8,7 +9,17 @@
 	$nomor_suratmasuk	                = mysqli_real_escape_string($db,$_POST['nomor_suratmasuk']);
 	$tanggalsurat_suratmasuk            = mysqli_real_escape_string($db,$_POST['tanggalsurat_suratmasuk']);
     $pengirim                           = mysqli_real_escape_string($db,$_POST['pengirim']);
-	$kepada_suratmasuk		            = mysqli_real_escape_string($db,$_POST['kepada_suratmasuk']);
+
+	$kepada_suratmasuk = '';
+	for ($i=0; $i<sizeof($_POST['kepada_suratmasuk']); $i++) {
+		if ($i==0) {
+			$kepada_suratmasuk = $_POST['kepada_suratmasuk'][0];
+		} else {
+			$kepada_suratmasuk = $kepada_suratmasuk.','.$_POST['kepada_suratmasuk'][$i];
+		}
+	}
+
+	$kepada_suratmasuk		            = mysqli_real_escape_string($db,$kepada_suratmasuk);
 	$perihal_suratmasuk   	            = mysqli_real_escape_string($db,$_POST['perihal_suratmasuk']);
     $operator	                        = mysqli_real_escape_string($db,"");
 	$disposisi1	                        = mysqli_real_escape_string($db,$_POST['disposisi1']);

@@ -4,6 +4,7 @@ session_start();
 include "login/ceksession.php";
 ?>
 <html lang="en">
+  <?php if ($_SESSION['username']!='kepala') { header("Location: /arsipsurat-master/admin/datasuratmasuk.php"); die(); } ?>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -36,6 +37,7 @@ include "login/ceksession.php";
     <!-- bootstrap-daterangepicker -->
     <link href="../assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/icon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Custom Theme Style -->
     <link href="../assets/build/css/custom.min.css" rel="stylesheet">
@@ -162,14 +164,21 @@ include "login/ceksession.php";
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kepada <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select value="<?php echo $data['kepada_suratmasuk'];?>" id="kepada_suratmasuk" name="kepada_suratmasuk" class="select2_single form-control" tabindex="-1">
-                            <option <?php echo empty($data['kepada_suratmasuk']) ? "selected" : ""?>>Kasubbag Umum</option>
-                            <option>Koor. Fungsi Statistik Sosial</option>
-                            <option>Koor. Fungsi Statistik Produksi</option>
-                            <option>Koor. Fungsi Statistik Distribusi</option>
-                            <option>Koor. Fungsi Nerwilis</option>
-                            <option>Koor. Fungsi IPDS</option>
+                          <select id="kepada_suratmasuk" name="kepada_suratmasuk[]" class="select2_single form-control" tabindex="-1" multiple="multiple">
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Kasubbag Umum")!==false ? "selected" : ""?>>Kasubbag Umum</option>
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Sosial")!==false ? "selected" : ""?>>Koor. Fungsi Statistik Sosial</option>
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Produksi")!==false ? "selected" : ""?>>Koor. Fungsi Statistik Produksi</option>
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Distribusi")!==false ? "selected" : ""?>>Koor. Fungsi Statistik Distribusi</option>
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Koor. Fungsi Nerwilis")!==false ? "selected" : ""?>>Koor. Fungsi Nerwilis</option>
+                            <option <?php echo strpos($data['kepada_suratmasuk'], "Koor. Fungsi IPDS")!==false ? "selected" : ""?>>Koor. Fungsi IPDS</option>
                           </select>
+                          <script>
+                            $('option').mousedown(function(e) {
+                                e.preventDefault();
+                                $(this).prop('selected', !$(this).prop('selected'));
+                                return false;
+                            });
+                          </script>
                         </div>
                       </div>
                       <div class="form-group">
