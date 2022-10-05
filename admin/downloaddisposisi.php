@@ -141,27 +141,27 @@ $disposisi = '
 					</td>
 					<td style="width: 45%; padding: 8px;">
 						<div style="width: 100%;">
-							<span style="'.($data['kepada_suratmasuk']=="Kasubbag Umum" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Kasubbag Umum")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Kasubbag Umum</span>
 						</div>
 						<div style="width: 100%; margin-top: 8px;">
-							<span style="'.($data['kepada_suratmasuk']=="Koor. Fungsi Statistik Sosial" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Sosial")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi Statistik Sosial</span>
 						</div>
 						<div style="width: 100%; margin-top: 8px;">
-							<span style="'.($data['kepada_suratmasuk']=="Koor. Fungsi Statistik Produksi" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Produksi")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi Statistik Produksi</span>
 						</div>
 						<div style="width: 100%; margin-top: 8px;">
-							<span style="'.($data['kepada_suratmasuk']=="Koor. Fungsi Statistik Distribusi" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Koor. Fungsi Statistik Distribusi")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi Statistik Distribusi</span>
 						</div>
 						<div style="width: 100%; margin-top: 8px;">
-							<span style="'.($data['kepada_suratmasuk']=="Koor. Fungsi Nerwilis" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Koor. Fungsi Nerwilis")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi Nerwilis</span>
 						</div>
 						<div style="width: 100%; margin-top: 8px;">
-							<span style="'.($data['kepada_suratmasuk']=="Koor. Fungsi IPDS" ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="'.(strpos($data['kepada_suratmasuk'], "Koor. Fungsi IPDS")!==false ? "background-color: black; " : "").'font-size: 25px; border: 1px solid black; width: 10%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="width: 90%; padding: 0 8px;">Koor. Fungsi IPDS</span>
 						</div>
 					</td>
